@@ -15,7 +15,6 @@ java.sourceSets["test"].java {
 
 tasks.jar {
     archiveBaseName.set("h2-mvstore")
-    archiveVersion.set("2.2.224-SNAPSHOT")
 }
 
 java {
@@ -50,5 +49,9 @@ tasks.named("javadoc") {
 }
 
 tasks.named("licenseMain") {
+    enabled = false
+}
+
+tasks.named("licenseTest") {
     enabled = false
 }
