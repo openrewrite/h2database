@@ -8,9 +8,17 @@ java.sourceSets["main"].java {
     srcDir("src/main")
 }
 
+java.sourceSets["main"].resources {
+    srcDir("src/main")
+}
+
 java.sourceSets["test"].java {
     srcDir("src/test")
     srcDir("src/tools")
+}
+
+java.sourceSets["test"].resources {
+    srcDir("src/test")
 }
 
 tasks.jar {
