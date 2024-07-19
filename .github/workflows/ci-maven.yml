@@ -1,0 +1,36 @@
+---
+name: ci-maven
+
+on:
+  workflow_call:
+    inputs:
+      java_version:
+        description: Java version for setup-java
+        type: string
+        required: false
+        default: 21
+
+env:
+  MAVEN_SWITCHES: --batch-mode
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule' || github.repository_owner == 'openrewrite' || github.repository_owner == 'moderneinc'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          show-progress: false
+      ########################
+      - uses: actions/setup-java@v4.0.0
+        with:
+          distribution: temurin
+          java-version: ${{ inputs.java_version }}
+
+      ########################
+      - name: Setup Maven
+        uses: stCarolas/setup-maven@v5 
+
+      - name: build
+        run: ./mvnw ${{ env.MAVEN_SWITCHES }} test
