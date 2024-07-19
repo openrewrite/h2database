@@ -3,7 +3,7 @@
 /.classpath
 /.project
 /dist/
-/build/
+build/
 /nbproject/
 /data/
 /error.lock
@@ -18,4 +18,5 @@
 /temp/
 /h2web/
 .pmd
+.gradle
 docs/html/testOutput.html
