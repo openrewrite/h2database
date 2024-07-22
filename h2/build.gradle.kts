@@ -47,6 +47,12 @@ dependencies {
     testImplementation("org.ow2.asm:asm:9.4")
 }
 
+publishing {
+    publications.withType<MavenPublication> {
+        artifactId = "h2-mvstore"
+    }
+}
+
 tasks.withType<JavaCompile>().configureEach {
     options.isFork = true
     options.release.set(null as? Int?) // remove `--release 8` set in `org.openrewrite.java-base`
